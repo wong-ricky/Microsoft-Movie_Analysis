@@ -82,7 +82,7 @@ Through this analysis we have found 4 points Microsoft’s Movie Studio should t
 1.	A successful film is measured in dollars, so we have a list of the top 10 grossing films. Further analysis will be needed on why these are so successful especially **Star Wars: The Force Awakens** and **Avengers: Infinity War** that made over $2 Billion worldwide
 2.	Another measure of success are ratings. Apart from **The Hunger Games** the other films did well reaching an average rating of 8 or above. **Inception** did extremely well with the most votes and highest average rating. 
 3.	With so many genres it can be difficult to decide what kind of movie to make. We have found half of the 10 top voted movies are **Action** and **Adventure** movies.
-4.	75% of the top 10 movies run for 139 to 165 minutes. It is not a must, but the audience will be expecting a movie to run for around that long
+4.	50% of the top 10 movies run for 81 to 104 minutes. It is not a must, but the audience will be expecting a movie to run for around that long
 
 Limitations
 
@@ -108,8 +108,9 @@ Describe the structure of your repository and its contents, for example:
 
 ```
 ├── README.md                           <- The top-level README for reviewers of this project
-├── dsc-phase1-project-template.ipynb   <- Narrative documentation of analysis in Jupyter notebook
-├── DS_Project_Presentation.pdf         <- PDF version of project presentation
+├── move-analysis.ipynb                 <- Narrative documentation of analysis in Jupyter notebook
+├── notebook.pdf                        <- PDF version of project presentation
+├── presentation.pdf                    <- PDF version of project presentation
 ├── data                                <- Both sourced externally and generated from code
 └── images                              <- Both sourced externally and generated from code
 ```
