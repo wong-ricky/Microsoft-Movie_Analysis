@@ -1,71 +1,115 @@
-# Phase 1 Project Template - Minimum Viable Product (MVP)
+# Title
 
-![blueprint](images/blueprint.png)
+**Authors**: Ricky Wong
 
-This repository is like a blueprint, providing structure for your first End of Phase Project. We suggest you base your Phase 1 project off of this repository so you can focus less on formatting and organization, and more on the _analysis and communication skills_ that will support your progress through the course. This template is designed to make your project portfolio-ready in order to impress the future employers who will review it. 
+## Overview
 
-## Repository Contents
+Microsoft has decided they want to get into creating original video content with their own movie studio. With a list of top grossing and popular movie titles, popular genres and average runtime Microsoft will have a better understanding of the type of movies they want to make.
 
-Below is a list of the contents of this repository - instructions for using them are in the next section.
+## Business Problem
 
-- `README.md`: The README for this repo branch explaining it's contents - you're reading it now
-- `TEMPLATE_README.md`: An example of a project README that provides a brief overview of your whole project
-- `dsc-phase1-project-template.ipynb`: A starter Jupyter Notebook with headings, code examples and guiding questions
-- `DS_Project_Presentation_Template.pdf`: A starter slide deck presenting your project - here is an [editable version](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy)
-- `data` folder: A folder for the data you reference with your code
-- `images` folder: A folder for the images you reference in your files 
-- `.gitignore`: A hidden file that tells git to not track certain files and folders
+To figure out what kind of movies Microsoft should start making, we must first find out which movies they should draw their inspirations from. From those films we can highlight the genres people enjoy watching and for Microsoft to focus on. To meet their audiences’ expectations, Microsoft would like to know how long the average movie goes for so viewers don’t feel ripped off of get bored. Exploring data from IMDb, an extensive movie database, we are able to come up with successful and popular movie titles, popular genres and average film lengths.
 
-## Instructions For Using This Repository
+## Data
 
-### Fork This Repository
+IMDb is an online database for information related to films and other video entertainment. We have basic data of the movies  which includes the genre, ratings, runtime and also how much each movie made.
 
-**For a group project**, have only one team member do these steps:
+### IMDb Title
 
-1. Fork this repository to your personal account
-   - In GitHub, go to this repository and click the "Fork" button in the upper right
-   
-2. Change the name of your fork of this repo to a _descriptive_ name of your choosing
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Options" -> "Repository Name" -> "Rename"
-   - Make the name descriptive, since potential employers will read it. Ex: "Microsoft-Movie-Analysis" is better than "Project-1"
+With the basic data we can find out which genres are popular and how long each movie runs for
 
-3. Use `git clone` to clone your fork of this repo to your local computer
+### BOM Gross
 
-4. **For a group project**, add team members as collaborators to your fork of this repo
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Manage Access" -> "Invite Teams or People"
-   - Add your project team members as collaborators & send them the repo GitHub URL
+This data set will help us find how much money each movie made domestic and overseas.
 
-### Work In Your Fork Of This Repository
+### IMDb Ratings
 
-- Work in the repo clone that you created on your local machine
-- Start writing and coding in the Jupyter Notebook `dsc-phase1-project-template.ipynb`
-- Fill in the README template in `TEMPLATE_README.md`
-- Use `git add`, `git commit`, and `git push` often to update your repo in GitHub
-   - For a refresher on how to do this and why it's important, review Topic 2: Bash and Git
+The average rating and number of votes for each movie. We will need to link this with the previous data set to know the names of the movies.
 
-### Use The Slide Template
+### BOM Gross
 
-1. Go to [this link](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy) to make an editable copy of the slide deck in your own Google Drive account
-2. Go to "Slide," select "Change Theme," and pick a theme you like so your presentation doesn't look like everyone else's
-3. **For a group project**, click the "Share" button and add your teammates as editors
+This data set will help us find how much money each movie made domestic and overseas.
 
-### Tidy Up Your Project
 
-- Change the file name of the Jupyter Notebook (`dsc-phase1-project-template.ipynb`) to something more descriptive
-- Save an appropriately-named PDF version of your slide deck to the repository
-- Rename the template readme you've been working in by running `git mv TEMPLATE_README.md README.md`
-- Delete unnecessary files from the repo using `git rm`
-   - The presentation PDF: `DS_Project_Presentation_Template.pdf`
-   - This README file: `README.md`
-   - Any unused data files in the `data` folder
-   - Any unused images in the `images` folder
+## Methods
 
-### Submit Your Project
+### Join IMDB title and ratings together
+- Merged title and ratings as ratings only had the movie ID, now we can see the rating and know which movie it is for.
+- Inner join will remove movies that do not have a rating. This is fine since we are only looking at popular movies.
+- 'tconst' is useful for merging tables but is not necesarry for analysing. We can remove 'original_title' as well and just use 'primary_title'
+- Renamed a few column names to make it more easy to understand
+- Sorting by average rating does not actually show how popular a movie was as the number of votes were low so sort by number of votes is more indicative of popularity
 
-To submit your project, please follow the instructions in the "Project Submission & Review" page in the Milestones course.
+### Movie Gross
+- Add 0 to missing gross values
+- Unable to convert 'foreign_gross' to float and found values with commas for over a billion
+- To maximise profits we should consider international market too not just domestic market
 
-***
-### Notes
+### Genre count
+Genre count of the top 10 movies so Microsoft knows what genre to focus on. Can be easily updated if they want to include more movies to the list.
 
-- The visualizations in the notebook use best practices for visualization that you should try to emulate. For example, they have clear axes, descriptive titles, and appropriate number formatting
-- The `dsc-phase1-project-template.ipynb` is intended to be the _final version_ of your project. The first notebook you create will not look like this. You are encouraged to start with a very disorderly notebook and clean it as you go
+
+## Results
+
+### Top 10 Grossing Films
+Knowing the total gross amount paints a better picture of a films performance. With the bar chart, it highlights how sucessful Star Wars: The Force Awakens and Avengers: Infinity War did. So Microsoft can now dive deeper and find out what made these movies so sucessful. 
+
+### Visual 1
+![graph1](images/top10_gross.jpg)
+
+### Vote Count
+Vote count is more of a popularity contest but is still important to analyse. We've found that average ratings isn't that reliable as they might only have a few votes. So the main focus is the amount of votes each movie got while the average rating can tell us if most of those votes were good, average or bad. 
+
+### Visual 2
+![graph2](images/top10_votes.jpg)
+
+### Top 10 Movies Genre Count
+These are the genres of the top 10 movies with the most votes. Some movies had more than 1 genre but we can clearly see that a lot of the movies were both action and adventure.
+
+### Visual 3
+![graph3](images/top10_movie_genre.jpg)
+
+### Movie Runtime
+Average runtime is important as movie-goers might have an expectation on movie length. They might feel ripped off if it's too short or get bored and fall a sleep if its too long. We can see that Microsoft should aim for 81 to 104 minutes. 
+
+### Visual 4
+![graph4](images/runtime_boxplot.jpg)
+
+
+
+## Conclusions
+Through this analysis we have found 4 points Microsoft’s Movie Studio should take note of.
+1.	A successful film is measured in dollars, so we have a list of the top 10 grossing films. Further analysis will be needed on why these are so successful especially **Star Wars: The Force Awakens** and **Avengers: Infinity War** that made over $2 Billion worldwide
+2.	Another measure of success are ratings. Apart from **The Hunger Games** the other films did well reaching an average rating of 8 or above. **Inception** did extremely well with the most votes and highest average rating. 
+3.	With so many genres it can be difficult to decide what kind of movie to make. We have found half of the 10 top voted movies are **Action** and **Adventure** movies.
+4.	75% of the top 10 movies run for 139 to 165 minutes. It is not a must, but the audience will be expecting a movie to run for around that long
+
+Limitations
+
+-	Although IMDb is such a large movie database, it does not include every single movie as the site is more aimed at western audience. However, it is only a small issue as they will most likely be Microsoft’s target audience too.
+-	With the rising popularity of streaming services, tv shows/series are also viable options. But this analysis only covered movies. 
+
+Next Steps
+
+-	To expand on how much money a movie made, we can find out the cost of each film and how much the average movie costs. From that we may see if costs are proportionate to the total gross amount
+-	Producers/Directors as well as actors also play a major part in the success of a movie. Each of them has their own style and excel at certain genres or roles. Through analysing them we may find out why some of the top movies did so well. 
+
+
+
+## For More Information
+
+Please review our full analysis in [our Jupyter Notebook](movie-analysis.ipynb) or our [presentation](./DS_Project_Presentation.pdf).
+
+For any additional questions, please contact ** Ricky wong_ricky@hotmail.com**
+
+## Repository Structure
+
+Describe the structure of your repository and its contents, for example:
+
+```
+├── README.md                           <- The top-level README for reviewers of this project
+├── dsc-phase1-project-template.ipynb   <- Narrative documentation of analysis in Jupyter notebook
+├── DS_Project_Presentation.pdf         <- PDF version of project presentation
+├── data                                <- Both sourced externally and generated from code
+└── images                              <- Both sourced externally and generated from code
+```

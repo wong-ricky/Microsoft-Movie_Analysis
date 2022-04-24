@@ -1,8 +1,0 @@
-- find films and see any similarities between high grossing, high rating, genre directors
-- avarage run time of movies and any correlation to success
-- recent genres that were popular
-- analyse the success of movies, find similarities between other successful movies
-
-- what are the top 10 most popular movies?
-- what are the top 10 highest grossing movies?
-
